@@ -1,5 +1,6 @@
 import React from "react"
 import { useRef } from "react"
+import classes from "./NewTodo.module.css"
 
 const NewTodo: React.FC<{onAddToDo: (enteredValue: string) => void}> = (props) => {
      //spefico il tipo dell'input a useRef e all'interno delle parentesi metto come valore iniziale di default null
@@ -21,7 +22,7 @@ const NewTodo: React.FC<{onAddToDo: (enteredValue: string) => void}> = (props) =
     }
 
     return (
-        <form onSubmit={submitHandler}>
+        <form className={classes.form} onSubmit={submitHandler}>
             <label htmlFor="newTodo">Add a task:</label>
             <input type="text" id="newTodo" ref={todoInputText} />
             <button>Add Todo</button>
