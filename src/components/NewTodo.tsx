@@ -1,8 +1,11 @@
 import React from "react"
-import { useRef } from "react"
+import { useRef, useContext } from "react"
+import { TodosContext } from "../store/todos-context"
 import classes from "./NewTodo.module.css"
 
-const NewTodo: React.FC<{onAddToDo: (enteredValue: string) => void}> = (props) => {
+const NewTodo: React.FC = () => {
+    const todosCtx = useContext(TodosContext)
+
      //spefico il tipo dell'input a useRef e all'interno delle parentesi metto come valore iniziale di default null
     const todoInputText = useRef<HTMLInputElement>(null)
     const submitHandler = (event: React.FormEvent) => {
@@ -17,8 +20,7 @@ const NewTodo: React.FC<{onAddToDo: (enteredValue: string) => void}> = (props) =
             return
         }
 
-        props.onAddToDo(enteredValue)
-
+        todosCtx.addTodo(enteredValue)
     }
 
     return (
